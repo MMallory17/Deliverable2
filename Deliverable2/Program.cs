@@ -1,56 +1,65 @@
 ﻿using System;
-using System.Diagnostics.Metrics;
 
-public class Program
+class Coin_FlippChallenge
 {
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
-        Console.WriteLine("Welcome to the COIN FLIP CHALLENGE!");
-        Console.WriteLine("What is your name?");
-        String name = Console.ReadLine();
-        Console.WriteLine("Welcome " + (name)  + " Do you want to do the COIN FLIP CHALLENGE? Yes/No");
-        String answer = Console.ReadLine();
-        
-        Random random = new Random();
-        bool result = random.Next(0, 1) != 0; 
-        int attempts = 1;
-        int num7 = 4;
+
+        int score = 0;
+        Random rand = new Random();
+
+        Console.WriteLine("              \nWELCOME TO COIN FLIP CHALLENGE GAME\n\n");
+        Console.Write("What is your name?\n>");
+        string name = Console.ReadLine();
 
 
-        if (answer == "No")
+        Console.WriteLine($"Welcome {name}. Do you want to do the COIN FLIP CHALLENGE? Yes/No");
+        string response = Console.ReadLine();
+
+        if (response.Trim().ToLower() != "yes")
         {
-            Console.WriteLine("You are a coward " + name);
+            Console.WriteLine($"You are a COWARD {name} !!");
+            return;
+        }
 
-        }
-        if (answer == "Yes") {
-            Console.WriteLine("Heads or Tails?");
-        }
+
+
+
 
         for (int i = 0; i < 5; i++)
-          
-            if (Console.ReadLine() != answer)
-            {
-                Console.WriteLine("Correct!");
+        {
 
-                
-                Console.WriteLine("Heads or Tails?");
+            int Coin_Flipp = rand.Next(2);
+
+
+            Console.Write("Heads or Tails?\n>");
+            string guess = Console.ReadLine().Trim().ToLower();
+
+
+            int choice;
+            if (guess == "heads")
+            {
+                choice = 0;
+
             }
             else
             {
-                Console.WriteLine("Wrong");
+
+                choice = 1;
             }
-      Console.WriteLine("Thank you " +  name + " You got a score of " + num7!);
 
 
+            if (choice == Coin_Flipp)
+            {
+                Console.WriteLine("Correct!");
+                score++;
+            }
+            else
+            {
+                Console.WriteLine("Wrong!");
+            }
+        }
 
-
-
-
-
-
-
-
-
-
-    }    
+        Console.WriteLine($"Thank you {name}. You got a score of {score}!!");
+    }
 }
